@@ -12,6 +12,19 @@ This README file only contains basic setup instructions.
 
 ## Building
 
+Prepare:
+Before building, need use Jvm-7 (I cannot get JVM-8 to work easily):
+For MacOS, you need to uninstall JVM-8, before you can install JVM-7
+For linux, you can install JVM-7, and then use  `sudo update-alternatives --config java`
+
+Updated dependencies, add an additional resolver for the new bintray repo to project/plugins.sbt. [https://gist.github.com/notadoctor/4b60867db288a8cc8e8c]
+
+`resolvers += Resolver.url("bintray-sbt-plugins", url("http://dl.bintray.com/sbt/sbt-plugin-releases"))(Resolver.ivyStylePatterns)`
+
+Set `sbt-assembly` in the `project/plugins.sbt`, accordingly [https://github.com/sbt/sbt-assembly]
+
+Also specify `scalaVersion in ThisBuild := "2.10"` in a `build.sbt` file (create it if not exist)
+
 Spark requires Scala 2.10. The project is built using Simple Build Tool (SBT),
 which is packaged with it. To build Spark and its example programs, run:
 
